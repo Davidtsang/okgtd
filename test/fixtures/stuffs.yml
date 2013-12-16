@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  content: MyString
+  statu_code: 1
+  parent_id: 1
+  deadline: 2013-12-16
+  doing_date: 2013-12-16
+  plan_time: 1
+
+two:
+  content: MyString
+  statu_code: 1
+  parent_id: 1
+  deadline: 2013-12-16
+  doing_date: 2013-12-16
+  plan_time: 1
