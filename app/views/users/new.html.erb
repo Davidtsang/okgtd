@@ -1,9 +1,13 @@
 <h1>User#new</h1>
- <%= form_for(@user ,:html => {:class => "form"}) do |f| %>
- <%= f.label :email %>
- <%= f.text_field :email %>
- <%= f.label :password  %>
- <%= f.text_field :password %>
+<div class='signup-form'>
+ <%= form_for(@user) do |f| %>
+ 
+ <%= render 'shared/error_messages' %>
+ <%= f.label :email %><br />
+ <%= f.text_field :email %><br />
+ <%= f.label :password  %><br />
+ <%= f.text_field :password %><br />
  
  <%= f.submit "Create" %>
  <% end %>
+</div>
