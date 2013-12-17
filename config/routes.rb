@@ -1,6 +1,13 @@
 Okgtd::Application.routes.draw do
+  get "static_pages/home"
+  match '/help', to: 'static_pages#help', via: 'get'
+  match '/home', to: 'static_pages#home', via: 'get'
+  match '/signup',  to: 'users#new', via: 'get'
+  
+  get "static_pages/about"
+  get "static_pages/contact"
   resources :users
-
+  root :to => "static_pages#home"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

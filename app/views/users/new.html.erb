@@ -1,7 +1,9 @@
 <h1>User#new</h1>
- <%= form_for(@user) do |f| %>
- <%= f.label :email  %>
+ <%= form_for(@user ,:html => {:class => "form"}) do |f| %>
+ <%= f.label :email %>
  <%= f.text_field :email %>
+ <%= f.label :password  %>
+ <%= f.text_field :password %>
+ 
  <%= f.submit "Create" %>
  <% end %>
-<p>Find me in app/views/user/new.html.erb</p>
