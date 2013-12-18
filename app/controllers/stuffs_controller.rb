@@ -1,4 +1,5 @@
 class StuffsController < ApplicationController
+  before_action :signed_in_user
   def show
     @stuffs = Stuff.all
   end
@@ -29,4 +30,5 @@ class StuffsController < ApplicationController
     def stuff_params
       params.require(:stuff).permit(:content)
     end
+
 end
