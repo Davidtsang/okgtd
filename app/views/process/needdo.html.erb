@@ -1,0 +1,6 @@
+<h1>Process#Step2</h1>
+<p><%= @stuff.id %></p>
+<p><%= @stuff.content %> </p>
+<p>这个材料需要采取行动吗？</p>
+<%= link_to 'Yes', "/process/#{@stuff.id}/doit" %>
+<%= link_to 'No', "/process/#{@stuff.id}/donot" %>

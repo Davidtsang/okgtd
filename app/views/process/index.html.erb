@@ -1,0 +1,8 @@
+<h1>Process#index</h1>
+<table class="table">
+<% @stuffs.each do |s| %>
+<tr><td><a href='process/<%= s.id %>/needdo'><%= s.content %></a></td>
+</tr>
+<% end %>
+</table>
+<p>Find me in app/views/process/index.html.erb</p>

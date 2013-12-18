@@ -1,0 +1,26 @@
+<h1>Process#Doing now</h1>
+<p><%= @stuff.id %></p>
+<p><%= @stuff.content %> </p>
+<p>请在2分钟内完成：</p>
+
+<div id="hideMsg">
+  <span>120</span> 秒
+</div>
+
+<%= link_to 'Done' ,"/process/#{@stuff.id}/done" %><br>
+<%= link_to 'I can not ,next step' ,"/process/#{@stuff.id}/dolater" %>
+
+<script>
+
+    var sec = 120
+    var timer = setInterval(function() {
+        $('#hideMsg span').text(sec--);
+        if (sec == -1) {
+            $('#hideMsg').fadeOut('fast');
+
+            clearInterval(timer);
+        }
+    }, 1000);
+
+
+</script>

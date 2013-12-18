@@ -1,0 +1,7 @@
+<h1>Process#Do not</h1>
+<p><%= @stuff.id %></p>
+<p><%= @stuff.content %> </p>
+<p>将这个材料放入：</p>
+<%= link_to 'Move to Trashcan' ,"/process/#{@stuff.id}/to_trash" %>
+<%= link_to 'Move to Ref folder' ,"/process/#{@stuff.id}/to_ref" %>
+<%= link_to 'Move to Future folder' ,"/process/#{@stuff.id}/to_future" %>
