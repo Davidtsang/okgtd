@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131217100015) do
+ActiveRecord::Schema.define(version: 20131218064859) do
 
   create_table "stuff_tags", force: true do |t|
     t.integer  "stuff_id"
@@ -44,12 +44,14 @@ ActiveRecord::Schema.define(version: 20131217100015) do
 
   create_table "users", force: true do |t|
     t.string   "email"
-    t.string   "password"
+    t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "remember_token"
   end
 
   add_index "users", ["email"], name: "index_users_on_email"
-  add_index "users", ["password"], name: "index_users_on_password"
+  add_index "users", ["password_digest"], name: "index_users_on_password_digest"
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
 
 end

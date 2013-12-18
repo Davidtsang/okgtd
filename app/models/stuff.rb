@@ -4,4 +4,5 @@ class Stuff < ActiveRecord::Base
   default_scope -> { order('created_at DESC') }
   validates :user_id, presence: true
   validates :content, presence: true, length: { maximum: 250}
+  STATU_CODE_AT_INBOX = 1
 end
