@@ -1,10 +1,22 @@
 Okgtd::Application.routes.draw do
+
   get "static_pages/home"
+  get "process/:id/needdo"  => "process#needdo"
+  get 'process/:id/doit' =>'process#doit'
+  get 'process/:id/donot' =>'process#donot'
+  get 'process/:id/donow' =>'process#donow'
+  get 'process/:id/dolater' =>'process#dolater'
+  get 'process/:id/done' =>'process#done'
+  get 'process/:id/to_trash' =>'process#to_trash'
+  get 'process/:id/to_ref' =>'process#to_ref'
+  get 'process/:id/to_future' =>'process#to_future'
+
   match '/help', to: 'static_pages#help', via: 'get'
   match '/home', to: 'static_pages#home', via: 'get'
   match '/signup',  to: 'users#new', via: 'get'
   match '/inbox',  to: 'stuffs#new', via: 'get'
-  
+  match '/process', to: 'process#index', via: 'get'
+
   get "static_pages/about"
   get "static_pages/contact"
   resources :users
