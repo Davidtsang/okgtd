@@ -1,5 +1,6 @@
 Okgtd::Application.routes.draw do
 
+  get "organzie/index"
   get "static_pages/home"
   get "process/:id/needdo"  => "process#needdo"
   get 'process/:id/doit' =>'process#doit'
@@ -10,7 +11,13 @@ Okgtd::Application.routes.draw do
   get 'process/:id/to_trash' =>'process#to_trash'
   get 'process/:id/to_ref' =>'process#to_ref'
   get 'process/:id/to_future' =>'process#to_future'
+  get 'process/:id/to_org' =>'process#to_org'
+  get 'process/:id/to_other' =>'process#to_other'
 
+  get 'organzie/:id/org' =>'organzie#org'
+
+  match '/organzie/org_act',to:'organzie#org_act',via: 'patch'
+  match '/organzie', to: 'organzie#index', via: 'get'
   match '/help', to: 'static_pages#help', via: 'get'
   match '/home', to: 'static_pages#home', via: 'get'
   match '/signup',  to: 'users#new', via: 'get'

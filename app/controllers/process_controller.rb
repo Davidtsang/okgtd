@@ -57,4 +57,20 @@ class ProcessController < ApplicationController
     flash[:success] ='YOU DONE THAT JOB!'
     redirect_to process_path
   end
+
+  def to_org
+    stuff = current_user.stuffs.find_by(id: params['id'])
+    stuff.statu_code =Stuff::STATU_CODE_AT_ORG
+    stuff.save
+    flash[:success] ='Moved to Organize folder!'
+    redirect_to process_path
+  end
+
+  def to_other
+    stuff = current_user.stuffs.find_by(id: params['id'])
+    stuff.statu_code =Stuff::STATU_CODE_AT_OTHER
+    stuff.save
+    flash[:success] ='Moved to waiting folder!'
+    redirect_to process_path
+  end
 end

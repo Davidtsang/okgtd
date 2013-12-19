@@ -1,0 +1,6 @@
+<h1>Process#Dolater  ?</h1>
+<p><%= @stuff.id %></p>
+<p><%= @stuff.content %> </p>
+<p>将这个材料：</p>
+<%= link_to '加入组织文件夹，等待下一步处理' ,"/process/#{@stuff.id}/to_org" %>
+<%= link_to '委托给他人处理' ,"/process/#{@stuff.id}/to_other" %>

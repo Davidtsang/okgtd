@@ -1,0 +1,8 @@
+<h1>Organzie#index</h1>
+<table class="table">
+  <% @stuffs.each do |s| %>
+      <tr><td><a href='organzie/<%= s.id %>/org'><%= s.content %></a></td>
+      </tr>
+  <% end %>
+</table>
+<p>Find me in app/views/process/index.html.erb</p>
