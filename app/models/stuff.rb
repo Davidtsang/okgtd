@@ -1,5 +1,6 @@
 class Stuff < ActiveRecord::Base
   #has_many :tag , through: :stuff_tag ,source: :tag_id
+
   belongs_to :user
   default_scope -> { order('created_at DESC') }
   validates :user_id, presence: true
@@ -15,6 +16,7 @@ class Stuff < ActiveRecord::Base
   STATU_CODE_AT_NEXT = 99
   STATU_CODE_AT_SCHEDULE =98
   STATU_CODE_AT_PROJECT =97
+  NEED_DOING_STUFF_MIN_VAL = 50
 
   PLAN_TIME =[['',-1],
               ['5 m',1],
@@ -45,10 +47,6 @@ class Stuff < ActiveRecord::Base
               ['3 year',26],
   ]
 
-  def plan_time
-    PLAN_TIME
-  end
-
   def to_next_act
     STATU_CODE_AT_NEXT
   end
@@ -60,5 +58,6 @@ class Stuff < ActiveRecord::Base
   def to_project
     STATU_CODE_AT_PROJECT
   end
+
 
 end

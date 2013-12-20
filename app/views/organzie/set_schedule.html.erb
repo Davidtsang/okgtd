@@ -1,0 +1,9 @@
+<h1>Organize#Set Schedule Time</h1>
+<p><%= @stuff.id %></p>
+<p><%= @stuff.content %>
+
+  <p>设定执行日期：</p>
+<%= form_for(@stuff,:url => 'set_schedule_act')  do |f| %>
+      <%= f.date_select(:doing_date) %><br>
+      <%= f.submit "OK" %>
+<% end %>

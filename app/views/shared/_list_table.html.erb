@@ -1,0 +1,6 @@
+<table class="table">
+  <% @stuffs.each do |s| %>
+      <tr><td><a href='stuffs/<%= s.id %>'><%= s.content %></a></td>
+      </tr>
+  <% end %>
+</table>

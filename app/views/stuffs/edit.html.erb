@@ -1,8 +1,6 @@
-<h1>Organize#org</h1>
-<p><%= @stuff.id %></p>
-<p><%= @stuff.content %> </p>
-<%= form_for(@stuff,:url => 'org_act')  do |f| %>
-
+<h1>Edit#Stuff#<%= @stuff.id %> </h1>
+<%= form_for @stuff do |f| %>
+    <%= f.text_field :content %>
     <p>1. 预估需要时间</p>
     <%= f.select(:plan_time, Stuff::PLAN_TIME) %><br>
     <div class="radio">
@@ -27,12 +25,12 @@
       <p>耗时超过1天，需要详细规划的项目</p>
     </div>
     <div class="checkbox">
-       <label><input type="checkbox" id="has_deadline" name="has_deadline">有截止日期</label></div>
+      <label><input type="checkbox" id="has_deadline" name="has_deadline">有截止日期</label></div>
     <div class="checkbox hide" id="deadline">
       <%= f.date_select(:deadline) %></div>
     <%= f.submit "下一步" %>
 
-    <% end %>
+<% end %>
 
 <script>
     $(function () {

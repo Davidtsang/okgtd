@@ -16,7 +16,13 @@ Okgtd::Application.routes.draw do
 
   get 'organzie/:id/org' =>'organzie#org'
 
+  match '/next_action', to: 'stuffs#next_action' ,via:'get'
+  match '/schedule', to: 'stuffs#schedule' ,via:'get'
+  match '/project', to: 'stuffs#project' ,via:'get'
+  match '/all', to: 'stuffs#index' ,via:'get'
   match '/organzie/:id/org_act',to:'organzie#org_act',via: 'patch'
+  match '/organzie/:id/set_schedule_act',to:'organzie#set_schedule_act',via: 'patch'
+  match '/stuffs/:id/set_schedule_act',to:'stuffs#set_schedule_act',via: 'patch'
   match '/organzie', to: 'organzie#index', via: 'get'
   match '/help', to: 'static_pages#help', via: 'get'
   match '/home', to: 'static_pages#home', via: 'get'
