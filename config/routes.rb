@@ -16,7 +16,7 @@ Okgtd::Application.routes.draw do
 
   get 'organzie/:id/org' =>'organzie#org'
 
-  match '/organzie/org_act',to:'organzie#org_act',via: 'patch'
+  match '/organzie/:id/org_act',to:'organzie#org_act',via: 'patch'
   match '/organzie', to: 'organzie#index', via: 'get'
   match '/help', to: 'static_pages#help', via: 'get'
   match '/home', to: 'static_pages#home', via: 'get'
