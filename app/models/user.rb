@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
-  #has_many :stuff , dependent: :destroy
   has_many :stuffs , dependent: :destroy
+  has_many :tags , dependent:  :destroy
+
   has_secure_password
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true,

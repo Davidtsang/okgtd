@@ -24,6 +24,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      #set preset tags
+      set_preset_tags(@user.id)
       sign_in @user
       flash[:success] = "Create a new user!"
       redirect_to @user
@@ -33,6 +35,13 @@ class UsersController < ApplicationController
   end#end fun
 
   private
+
+  def set_preset_tags(user_id)
+    @user = User.find(user_id)
+    Tag::PRESET_TAGS.each do |t|
+      @user.tags.create!(name: t)
+    end
+  end
 
   def user_params
     params.require(:user).permit(:email, :password,

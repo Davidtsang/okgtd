@@ -1,5 +1,7 @@
 Okgtd::Application.routes.draw do
 
+  resources :tags
+
   get "organzie/index"
   get "static_pages/home"
   get "process/:id/needdo"  => "process#needdo"
