@@ -7,12 +7,13 @@ class StuffsController < ApplicationController
 
   def edit
     @stuff = set_stuff
+    @user_tags = current_user.tags.all.collect {|t| [t.name ,t.id]}
   end
 
   def update
     @stuff = set_stuff
     params['stuff']['deadline'] = nil if params['has_deadline'] != 'on'
-
+    #@stuff_tags = params['stuff']['stuffs_tags']
     if @stuff.update(stuff_params)
 
       if @stuff.statu_code == Stuff::STATU_CODE_AT_SCHEDULE

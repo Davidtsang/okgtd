@@ -6,12 +6,16 @@ class OrganzieController < ApplicationController
 
   def org
     @stuff = current_user.stuffs.find_by(id: params['id'])
+    @user_tags = current_user.tags.all.collect {|t| [t.name ,t.id]}
   end
 
   def org_act
     @stuff = current_user.stuffs.find_by(id: params['id'])
     params['stuff']['deadline'] = nil if params['has_deadline'] != 'on'
-
+    @stuff_tags = params['stuff']['stuffs_tags']
+    @stuff_tags.each { |s_t|
+      @stuff.stuffs_tags.create!(tag_id: s_t) unless s_t.empty?
+    }
     if @stuff.update(stuff_params)
 
       if @stuff.statu_code == Stuff::STATU_CODE_AT_SCHEDULE

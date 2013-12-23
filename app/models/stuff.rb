@@ -1,6 +1,6 @@
 class Stuff < ActiveRecord::Base
   #has_many :tag , through: :stuff_tag ,source: :tag_id
-  has_and_belongs_to_many :tags
+  has_many :stuffs_tags , dependent: :destroy
   belongs_to :user
   default_scope -> { order('created_at DESC') }
   validates :user_id, presence: true

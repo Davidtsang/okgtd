@@ -28,6 +28,13 @@
       <label><input type="checkbox" id="has_deadline" name="has_deadline">有截止日期</label></div>
     <div class="checkbox hide" id="deadline">
       <%= f.date_select(:deadline) %></div>
+
+    <div class="select">
+      <label>2. 选择标签</label><br>
+      <%= f.select(:stuffs_tags, @user_tags,{ :prompt => "Please select"},
+                   { :multiple => true, :size => @user_tags.count }
+          ) %>
+    </div>
     <%= f.submit "下一步" %>
 
 <% end %>
