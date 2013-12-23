@@ -31,7 +31,7 @@
 
     <div class="select">
       <label>2. 选择标签</label><br>
-      <%= f.select(:stuffs_tags, @user_tags,{ :prompt => "Please select"},
+      <%= f.select(:stuffs_tags, @user_tags,{:selected => @stuff.tags},
                    { :multiple => true, :size => @user_tags.count }
           ) %>
     </div>

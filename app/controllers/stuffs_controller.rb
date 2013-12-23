@@ -7,13 +7,14 @@ class StuffsController < ApplicationController
 
   def edit
     @stuff = set_stuff
-    @user_tags = current_user.tags.all.collect {|t| [t.name ,t.id]}
+    @user_tags = current_user.tags.all.collect {|t| [t.name ,t.id]}.unshift(['pls select',0])
   end
 
   def update
     @stuff = set_stuff
     params['stuff']['deadline'] = nil if params['has_deadline'] != 'on'
-    #@stuff_tags = params['stuff']['stuffs_tags']
+    @stuff_tags = params['stuff']['stuffs_tags']
+    @stuff.stuffs_tags.create
     if @stuff.update(stuff_params)
 
       if @stuff.statu_code == Stuff::STATU_CODE_AT_SCHEDULE

@@ -47,6 +47,14 @@ class Stuff < ActiveRecord::Base
               ['3 year',26],
   ]
 
+  def tags
+
+    self.stuffs_tags.all.map { |t|
+      t.tag_id
+    }
+
+  end
+
   def to_next_act
     STATU_CODE_AT_NEXT
   end
