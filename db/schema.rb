@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131221014702) do
+ActiveRecord::Schema.define(version: 20131224075056) do
 
   create_table "stuffs", force: true do |t|
     t.string   "content"
@@ -27,10 +27,12 @@ ActiveRecord::Schema.define(version: 20131221014702) do
 
   add_index "stuffs", ["user_id"], name: "index_stuffs_on_user_id"
 
-  create_table "stuffs_tags", id: false, force: true do |t|
+  create_table "stuffs_tags", force: true do |t|
     t.integer "stuff_id", null: false
     t.integer "tag_id",   null: false
   end
+
+  add_index "stuffs_tags", ["stuff_id", "tag_id"], name: "index_stuffs_tags_on_stuff_id_and_tag_id", unique: true
 
   create_table "tags", force: true do |t|
     t.string   "name"

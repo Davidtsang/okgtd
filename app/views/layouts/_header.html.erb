@@ -1,3 +1,4 @@
+<% @badge = nav_badge %>
 <div class="navbar navbar-default" role="navigation">
 	<div class="navbar-header">
 		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -11,7 +12,8 @@
 	<div class="navbar-collapse collapse">
 		<ul class="nav navbar-nav">
 			<li>
-				<%= nav_link 'Home', home_path %>
+				<%= nav_link 'Home', home_path  %>
+              <%= status_num_2_badge  @badge , Stuff::STATU_CODE_AT_INBOX   %>
 			</li>
 			<li>
 				<%= nav_link 'Inbox', inbox_path %>

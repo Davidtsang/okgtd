@@ -7,16 +7,16 @@ class StuffsController < ApplicationController
 
   def edit
     @stuff = set_stuff
-    @user_tags = current_user.tags.all.collect {|t| [t.name ,t.id]}.unshift(['pls select',0])
+    @user_tags = current_user.tags.all.collect { |t| [t.name, t.id] }.unshift(['pls select', 0])
   end
 
   def update
     @stuff = set_stuff
     params['stuff']['deadline'] = nil if params['has_deadline'] != 'on'
-    @stuff_tags = params['stuff']['stuffs_tags']
-    @stuff.stuffs_tags.create
-    if @stuff.update(stuff_params)
+    @stuff_tags = params['stuff']['stuffs_tags'].reject!(&:blank?)
 
+    @stuff.update_tags(@stuff_tags)
+    if @stuff.update(stuff_params)
       if @stuff.statu_code == Stuff::STATU_CODE_AT_SCHEDULE
         render :set_schedule
       else
@@ -78,7 +78,7 @@ class StuffsController < ApplicationController
   end
 
   def stuff_params
-    params.require(:stuff).permit(:content, :plan_time, :statu_code, :deadline,:doing_date)
+    params.require(:stuff).permit(:content, :plan_time, :statu_code, :deadline, :doing_date)
   end
 
 end
