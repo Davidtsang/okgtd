@@ -9,14 +9,6 @@ class ApplicationController < ActionController::Base
   end
 
 
-  def nav_badge
-    @statu_code_items =current_user.stuffs.all(
-        :group => "statu_code",
-        :select => 'statu_code ,COUNT(statu_code ) AS statu_num'
-    )
-  end
-
-
 
   #debug
   def var_dump(val)

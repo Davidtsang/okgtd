@@ -56,6 +56,22 @@ class Stuff < ActiveRecord::Base
   end
 
 
+  def Stuff.groups(user)
+    user.stuffs.all(
+        :group => "statu_code",
+        :select => 'statu_code ,COUNT(statu_code ) AS statu_num'
+    )
+  end
+
+  def Stuff.stuff_code_2_group_num(groups,stuff_code)
+    groups.each do |g|
+      if g.stuff_code  == stuff_code
+        return g.statu_num
+       end
+    end
+    return nil
+  end#
+
   def update_tags(new_stuff_tags)
     old_stuff_tags = self.tags
     if new_stuff_tags.count == 1 && new_stuff_tags.first == "0"

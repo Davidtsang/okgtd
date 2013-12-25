@@ -15,7 +15,7 @@ class TagsController < ApplicationController
 
   # GET /tags/new
   def new
-    @tag = Tag.new
+    @tag = current_user.tags.build
   end
 
   # GET /tags/1/edit
@@ -25,7 +25,7 @@ class TagsController < ApplicationController
   # POST /tags
   # POST /tags.json
   def create
-    @tag = Tag.new(tag_params)
+    @tag = current_user.tags.build(tag_params)
 
     respond_to do |format|
       if @tag.save
@@ -55,7 +55,15 @@ class TagsController < ApplicationController
   # DELETE /tags/1
   # DELETE /tags/1.json
   def destroy
-    @tag.destroy
+    #is tags empty?
+    @stuffs = StuffsTag.find_by(tag_id: @tag.id)
+    if @stuffs == nil
+      flash[:soccuss] ='this tag is delete!'
+      @tag.destroy
+    else
+      flash[:soccuss] ='tag is not empty!'
+    end
+
     respond_to do |format|
       format.html { redirect_to tags_url }
       format.json { head :no_content }
