@@ -4,8 +4,12 @@ class TagsController < ApplicationController
 
   # GET /tags
   # GET /tags.json
-  def index
+   def index
     @tags =  current_user.tags.all
+    @tags_groups ={}
+    StuffsTag::tags_groups(current_user).each do |st|
+      @tags_groups[st.tag_id] =st.tag_num
+    end
   end
 
   # GET /tags/1

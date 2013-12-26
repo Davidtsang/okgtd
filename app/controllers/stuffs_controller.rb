@@ -39,6 +39,11 @@ class StuffsController < ApplicationController
     @stuffs = current_user.stuffs.where('stuffs.statu_code = ?', Stuff::STATU_CODE_AT_NEXT)
   end
 
+  def next_action_by_tag
+    @stuffs = current_user.stuffs.joins(:tags).where('stuffs.statu_code = ? and tags.id =?',
+                                        Stuff::STATU_CODE_AT_NEXT,params[:id])
+  end
+
   def schedule
     @stuffs = current_user.stuffs.where('stuffs.statu_code = ?', Stuff::STATU_CODE_AT_SCHEDULE)
   end

@@ -55,7 +55,6 @@ class Stuff < ActiveRecord::Base
 
   end
 
-
   def Stuff.groups(user)
     user.stuffs.all(
         :group => "statu_code",

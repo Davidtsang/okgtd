@@ -1,11 +1,11 @@
 <h1>Listing tags</h1>
-<%= StuffsTag.tags_gruops current_user %>
 <table>
   <tbody>
     <% @tags.each do |tag| %>
+
       <tr>
         <td><%= link_to tag.name, tag %>
-
+         <span class="badge pull-right"><%= @tags_groups[tag.id] %></span>
         </td>
         <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
 
