@@ -2,5 +2,6 @@
 <p><%= @stuff.id %></p>
 <p><%= @stuff.content %> </p>
 <p>这个材料可以在2分钟内完成吗？</p>
+
+<%= link_to 'No', "/process/#{@stuff.id}/dolater" %><br>
 <%= link_to 'Yes', "/process/#{@stuff.id}/donow" %>
-<%= link_to 'No', "/process/#{@stuff.id}/dolater" %>

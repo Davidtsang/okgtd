@@ -9,20 +9,21 @@ module ApplicationHelper
 
   def nav_badge
     if signed_in?
-        Stuff.groups(current_user)
+      Stuff.groups(current_user)
     end
   end
 
   def status_num_2_badge(status_nums, nav_type)
+    if signed_in?
+      result = nil
+      status_nums.each do |s|
+        if s.statu_code == nav_type
 
-    result = nil
-    status_nums.each do |s|
-      if s.statu_code == nav_type
-
-        result= "<span class=\"badge badge-red pull-right\">#{s.statu_num.to_s}</span>".html_safe
+          result= "<span class=\"badge badge-red pull-right\">#{s.statu_num.to_s}</span>".html_safe
+        end
       end
+      result
     end
-    result
   end
 
 end #end mouldel

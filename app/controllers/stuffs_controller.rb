@@ -37,11 +37,18 @@ class StuffsController < ApplicationController
 
   def next_action
     @stuffs = current_user.stuffs.where('stuffs.statu_code = ?', Stuff::STATU_CODE_AT_NEXT)
+
   end
 
   def next_action_by_tag
     @stuffs = current_user.stuffs.joins(:tags).where('stuffs.statu_code = ? and tags.id =?',
                                         Stuff::STATU_CODE_AT_NEXT,params[:id])
+    @tag = Tag.find(params[:id])
+  end
+
+  def waiting
+    @stuffs = current_user.stuffs.
+        where('stuffs.statu_code = ?', Stuff::STATU_CODE_AT_OTHER)
   end
 
   def schedule
@@ -52,6 +59,10 @@ class StuffsController < ApplicationController
     @stuffs = current_user.stuffs.where('stuffs.statu_code = ?', Stuff::STATU_CODE_AT_PROJECT)
   end
 
+  def project_show
+
+  end
+  
   def create
 
     @stuff = current_user.stuffs.build(stuff_params)

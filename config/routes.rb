@@ -20,12 +20,17 @@ Okgtd::Application.routes.draw do
 
   match '/next_action', to: 'stuffs#next_action' ,via:'get'
   match '/schedule', to: 'stuffs#schedule' ,via:'get'
-  match '/project', to: 'stuffs#project' ,via:'get'
+  match '/projects/', to: 'stuffs#project' ,via:'get'
+  match '/project/:id', to: 'stuffs#project_show' ,via:'get'
   match '/all', to: 'stuffs#index' ,via:'get'
   match '/next_action_by_tag/:id', to: 'stuffs#next_action_by_tag',via: 'get'
   match '/organzie/:id/org_act',to:'organzie#org_act',via: 'patch'
   match '/organzie/:id/set_schedule_act',to:'organzie#set_schedule_act',via: 'patch'
+
+  resources :stuffs
   match '/stuffs/:id/set_schedule_act',to:'stuffs#set_schedule_act',via: 'patch'
+  match '/waiting', to: 'stuffs#waiting', via: 'get'
+
   match '/organzie', to: 'organzie#index', via: 'get'
   match '/help', to: 'static_pages#help', via: 'get'
   match '/home', to: 'static_pages#home', via: 'get'
@@ -36,7 +41,7 @@ Okgtd::Application.routes.draw do
   get "static_pages/about"
   get "static_pages/contact"
   resources :users
-  resources :stuffs
+
   resources :sessions , only: [:new, :create, :destroy]
   match '/signin' , to: 'sessions#new', via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'

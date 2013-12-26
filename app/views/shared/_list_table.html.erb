@@ -1,6 +1,7 @@
 <table class="table">
   <% @stuffs.each do |s| %>
-      <tr><td><a href='stuffs/<%= s.id %>'><%= s.content %></a></td>
+
+      <tr><td><%= link_to s.content , stuff_path(s.id) %></td>
       </tr>
   <% end %>
 </table>
