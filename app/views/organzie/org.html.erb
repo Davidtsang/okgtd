@@ -4,7 +4,8 @@
 <%= form_for(@stuff, :url => 'org_act') do |f| %>
 
     <p>1. 预估需要时间</p>
-    <%= f.select(:plan_time, Stuff::PLAN_TIME) %><br>
+
+    <%= f.select(:plan_time, @stuff.plan_time_set) %><br>
     <div class="radio">
       <label>
         <%= f.radio_button(:statu_code, @stuff.to_next_act, :checked => true) %>下一步文件夹</label>
@@ -19,13 +20,14 @@
       <p>需要在特定日期做的东西，请加入日程安排</p>
 
     </div>
+    <% if @stuff.parent_id? %>
+        <div class="radio" id="project_radio">
+          <label>
+            <%= f.radio_button(:statu_code, @stuff.to_project) %>项目文件夹</label>
 
-    <div class="radio">
-      <label>
-        <%= f.radio_button(:statu_code, @stuff.to_project) %>项目文件夹</label>
-
-      <p>耗时超过1天，需要详细规划的项目</p>
-    </div>
+          <p>耗时超过1天，需要详细规划的项目</p>
+        </div>
+    <% end %>
     <div class="checkbox">
       <label><input type="checkbox" id="has_deadline" name="has_deadline">有截止日期</label></div>
     <div class="checkbox hide" id="deadline">
@@ -33,8 +35,8 @@
 
     <div class="select">
       <label>2. 选择标签</label><br>
-      <%= f.select(:stuffs_tags, @user_tags,{ :selected =>@stuff.stuffs_tags, :prompt => "Please select"},
-                   { :multiple => true, :size => @user_tags.count }
+      <%= f.select(:stuffs_tags, @user_tags, {:selected => @stuff.stuffs_tags, :prompt => "Please select"},
+                   {:multiple => true, :size => @user_tags.count}
           ) %>
     </div>
     <%= f.submit "下一步" %>
@@ -43,7 +45,10 @@
 
 <script>
     $(function () {
+        //is sub itme of a project?
+
         $("#stuff_plan_time").change(function () {
+
             if (Number($("#stuff_plan_time").val()) > 10) {
                 $("#stuff_statu_code_<%=@stuff.to_project%>").prop('checked', true);
                 $("#stuff_statu_code_<%=@stuff.to_next_act%>").prop('disabled', true);

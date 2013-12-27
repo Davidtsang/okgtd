@@ -22,6 +22,8 @@ Okgtd::Application.routes.draw do
   match '/schedule', to: 'stuffs#schedule' ,via:'get'
   match '/projects/', to: 'stuffs#project' ,via:'get'
   match '/project/:id', to: 'stuffs#project_show' ,via:'get'
+  match '/project/:id/item_new', to: 'stuffs#project_item_new' ,via:'get'
+
   match '/all', to: 'stuffs#index' ,via:'get'
   match '/next_action_by_tag/:id', to: 'stuffs#next_action_by_tag',via: 'get'
   match '/organzie/:id/org_act',to:'organzie#org_act',via: 'patch'
@@ -30,7 +32,7 @@ Okgtd::Application.routes.draw do
   resources :stuffs
   match '/stuffs/:id/set_schedule_act',to:'stuffs#set_schedule_act',via: 'patch'
   match '/waiting', to: 'stuffs#waiting', via: 'get'
-
+  match '/stuffs/:id/done',to: 'stuffs#done',via: 'get'
   match '/organzie', to: 'organzie#index', via: 'get'
   match '/help', to: 'static_pages#help', via: 'get'
   match '/home', to: 'static_pages#home', via: 'get'

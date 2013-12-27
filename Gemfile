@@ -13,6 +13,10 @@ gem 'bootstrap-sass' , "~> 3.0.3.0"
 gem "bcrypt-ruby", "~> 3.1.2"
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
+gem "thin"
+group :production do
+  gem 'pg'
+end
 
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'

@@ -49,6 +49,11 @@ class Stuff < ActiveRecord::Base
               ['3 year', 26],
   ]
 
+  def plan_time_set
+    @plan_times = Stuff::PLAN_TIME
+    @plan_times =@plan_times[0..10] if :parent_id?
+  end
+
   def tags_ids
     self.stuffs_tags.all.map { |t|
       t.tag_id

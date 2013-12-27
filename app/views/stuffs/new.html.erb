@@ -1,11 +1,3 @@
 <% provide(:tab, 'inbox') %>
 <h1>Inbox#new</h1>
-<div class='signup-form'>
- <%= form_for(@stuff) do |f| %>
-
- <%= f.label :content %><br />
- <%= f.text_field :content %><br />
-
- <%= f.submit "Create" %>
- <% end %>
-</div>
+<%= render 'shared/stuff_new_form' %>

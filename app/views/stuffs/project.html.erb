@@ -1,9 +1,7 @@
-<h1>Project</h1>
+<h1>Projects</h1>
 <table class="table">
   <% @stuffs.each do |s| %>
       <tr><td><%= link_to s.content , "project/#{s.id}" %> </td>
       </tr>
   <% end %>
 </table>
-
-<%= link_to 'Add sub item' , '#' %>

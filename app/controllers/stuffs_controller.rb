@@ -60,9 +60,16 @@ class StuffsController < ApplicationController
   end
 
   def project_show
+    @stuff = current_user.stuffs.find(params[:id])
+    #@sub_items
+    @sub_items = current_user.stuffs.where('parent_id = ?',params[:id])
+  end
+
+  def project_item_new
+    @stuff =current_user.stuffs.build
+    @stuff.parent_id = params[:id]
 
   end
-  
   def create
 
     @stuff = current_user.stuffs.build(stuff_params)
@@ -94,7 +101,8 @@ class StuffsController < ApplicationController
   end
 
   def stuff_params
-    params.require(:stuff).permit(:content, :plan_time, :statu_code, :deadline, :doing_date)
+    params.require(:stuff).permit(:content, :plan_time, :statu_code, :deadline,
+                                  :doing_date, :parent_id)
   end
 
 end

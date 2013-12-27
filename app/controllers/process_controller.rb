@@ -6,24 +6,24 @@ class ProcessController < ApplicationController
   end
 
   def needdo
-    @stuff = current_user.stuffs.find_by(id: params['id'])
+    @stuff = set_stuff
   end
 
   def doit
-    @stuff = current_user.stuffs.find_by(id: params['id'])
+    @stuff = set_stuff
 
   end
 
   def donot
-    @stuff = current_user.stuffs.find_by(id: params['id'])
+    @stuff = set_stuff
   end
 
   def donow
-    @stuff = current_user.stuffs.find_by(id: params['id'])
+    @stuff = set_stuff
   end
 
   def to_trash
-    stuff = current_user.stuffs.find_by(id: params['id'])
+    stuff = set_stuff
     stuff.statu_code =Stuff::STATU_CODE_AT_TRASH
     stuff.save
     flash[:success] ='Moved to Trashcan!'
@@ -31,7 +31,7 @@ class ProcessController < ApplicationController
   end
 
   def to_ref
-    stuff = current_user.stuffs.find_by(id: params['id'])
+    stuff = set_stuff
     stuff.statu_code =Stuff::STATU_CODE_AT_REF
     stuff.save
     flash[:success] ='Moved to Ref folder!'
@@ -39,7 +39,7 @@ class ProcessController < ApplicationController
   end
 
   def to_future
-    stuff = current_user.stuffs.find_by(id: params['id'])
+    stuff = set_stuff
     stuff.statu_code =Stuff::STATU_CODE_AT_FUTURE
     stuff.save
     flash[:success] ='Moved to Future folder!'
@@ -47,11 +47,11 @@ class ProcessController < ApplicationController
   end
 
   def dolater
-    @stuff = current_user.stuffs.find_by(id: params['id'])
+    @stuff = set_stuff
   end
 
   def done
-    stuff = current_user.stuffs.find_by(id: params['id'])
+    stuff = set_stuff
     stuff.statu_code =Stuff::STATU_CODE_DONE
     stuff.save
     flash[:success] ='YOU DONE THAT JOB!'
@@ -59,7 +59,7 @@ class ProcessController < ApplicationController
   end
 
   def to_org
-    stuff = current_user.stuffs.find_by(id: params['id'])
+    stuff = set_stuff
     stuff.statu_code =Stuff::STATU_CODE_AT_ORG
     stuff.save
     flash[:success] ='Moved to Organize folder!'
@@ -67,10 +67,16 @@ class ProcessController < ApplicationController
   end
 
   def to_other
-    stuff = current_user.stuffs.find_by(id: params['id'])
+    stuff = set_stuff
     stuff.statu_code =Stuff::STATU_CODE_AT_OTHER
     stuff.save
     flash[:success] ='Moved to waiting folder!'
     redirect_to process_path
+  end
+
+  private
+
+  def set_stuff
+    current_user.stuffs.find_by(id: params['id'])
   end
 end

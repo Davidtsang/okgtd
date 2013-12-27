@@ -1,0 +1,13 @@
+<h1>Project#<%=@stuff.id%></h1>
+<%= render 'shared/stuff_content' %><br>
+
+
+<table class="table">
+  <% @sub_items.each do |s| %>
+
+      <tr><td><%= link_to s.content , stuff_path(s.id) %></td>
+      </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Add sub item' , "#{@stuff.id}/item_new" %>
