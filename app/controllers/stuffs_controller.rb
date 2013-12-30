@@ -55,9 +55,7 @@ class StuffsController < ApplicationController
     @stuffs = current_user.stuffs.where('stuffs.statu_code = ?', Stuff::STATU_CODE_AT_SCHEDULE)
   end
 
-  def project
-    @stuffs = current_user.stuffs.where('stuffs.statu_code = ?', Stuff::STATU_CODE_AT_PROJECT)
-  end
+
 
   def project_show
     @stuff = current_user.stuffs.find(params[:id])
@@ -93,6 +91,8 @@ class StuffsController < ApplicationController
       render :set_schedule
     end
   end
+
+
 
   private
 

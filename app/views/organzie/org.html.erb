@@ -20,7 +20,7 @@
       <p>需要在特定日期做的东西，请加入日程安排</p>
 
     </div>
-    <% if @stuff.parent_id? %>
+    <% unless @stuff.parent_id? %>
         <div class="radio" id="project_radio">
           <label>
             <%= f.radio_button(:statu_code, @stuff.to_project) %>项目文件夹</label>

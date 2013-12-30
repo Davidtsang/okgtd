@@ -4,24 +4,18 @@ Okgtd::Application.routes.draw do
 
   get "organzie/index"
   get "static_pages/home"
-  get "process/:id/needdo"  => "process#needdo"
-  get 'process/:id/doit' =>'process#doit'
-  get 'process/:id/donot' =>'process#donot'
-  get 'process/:id/donow' =>'process#donow'
-  get 'process/:id/dolater' =>'process#dolater'
-  get 'process/:id/done' =>'process#done'
-  get 'process/:id/to_trash' =>'process#to_trash'
-  get 'process/:id/to_ref' =>'process#to_ref'
-  get 'process/:id/to_future' =>'process#to_future'
-  get 'process/:id/to_org' =>'process#to_org'
-  get 'process/:id/to_other' =>'process#to_other'
+
+
 
   get 'organzie/:id/org' =>'organzie#org'
 
   match '/next_action', to: 'stuffs#next_action' ,via:'get'
   match '/schedule', to: 'stuffs#schedule' ,via:'get'
-  match '/projects/', to: 'stuffs#project' ,via:'get'
-  match '/project/:id', to: 'stuffs#project_show' ,via:'get'
+
+  #projects
+  match '/projects/', to: 'projects#index' ,via:'get'
+  match '/projects/:id', to: 'projects#show' ,via:'get'
+
   match '/project/:id/item_new', to: 'stuffs#project_item_new' ,via:'get'
 
   match '/all', to: 'stuffs#index' ,via:'get'
@@ -39,6 +33,17 @@ Okgtd::Application.routes.draw do
   match '/signup',  to: 'users#new', via: 'get'
   match '/inbox',  to: 'stuffs#new', via: 'get'
   match '/process', to: 'process#index', via: 'get'
+  get "process/:id/needdo"  => "process#needdo"
+  get 'process/:id/doit' =>'process#doit'
+  get 'process/:id/donot' =>'process#donot'
+  get 'process/:id/donow' =>'process#donow'
+  get 'process/:id/dolater' =>'process#dolater'
+  get 'process/:id/done' =>'process#done'
+  get 'process/:id/to_trash' =>'process#to_trash'
+  get 'process/:id/to_ref' =>'process#to_ref'
+  get 'process/:id/to_future' =>'process#to_future'
+  get 'process/:id/to_org' =>'process#to_org'
+  get 'process/:id/to_other' =>'process#to_other'
 
   get "static_pages/about"
   get "static_pages/contact"

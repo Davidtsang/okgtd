@@ -5,6 +5,10 @@ class ProcessController < ApplicationController
     @stuffs = current_user.stuffs.where("statu_code = ?",Stuff::STATU_CODE_AT_INBOX)
   end
 
+  def update
+
+  end
+
   def needdo
     @stuff = set_stuff
   end
