@@ -1,0 +1,16 @@
+<h1>Project#<%=@stuff.id%></h1>
+<%= render 'shared/stuff_content' %><br>
+
+
+<table class="table">
+  <% @sub_items.each do |s| %>
+
+      <tr><td>
+        <a href="<%= stuff_url(s.id) %>"><span <%="class='text-deleteline'".html_safe if s.statu_code ==
+                                              Stuff::STATU_CODE_DONE %>><%= s.content %></span></a>
+
+      </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Add sub item' , "#{@stuff.id}/item_new" %>

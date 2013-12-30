@@ -15,8 +15,10 @@ Okgtd::Application.routes.draw do
   #projects
   match '/projects/', to: 'projects#index' ,via:'get'
   match '/projects/:id', to: 'projects#show' ,via:'get'
+  match '/projects/:id/item_new', to: 'projects#item_new' ,via:'get'
 
-  match '/project/:id/item_new', to: 'stuffs#project_item_new' ,via:'get'
+  #trash
+  match 'trash' ,to:'stuffs#trash',via:'get'
 
   match '/all', to: 'stuffs#index' ,via:'get'
   match '/next_action_by_tag/:id', to: 'stuffs#next_action_by_tag',via: 'get'

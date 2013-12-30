@@ -1,10 +1,26 @@
-<%= @stuff.content %><br>
-<p>deadline:</p>
-<%= @stuff.deadline %><br>
-<p>doing date:</p>
-<%= @stuff.doing_date %><br>
-<p>plan time:</p>
-<%= @stuff.plan_time %><br>
-<%= link_to 'Edit' ,edit_stuff_path %>
-<%= link_to 'Done' ,"#{@stuff.id}/done" %>
+<h3><%= @stuff.content %></h3>
+<p>deadline:
+  <%= @stuff.deadline %></p>
+<p>doing date:
+  <%= @stuff.doing_date %></p>
+<p>plan time:
+  <%= @stuff.plan_time %>
+</p>
+<p>belongs to:
+  <%= @stuff.parent_id %>
+</p>
 
+<p>statu:
+  <%= Stuff::statu_code_2_name @stuff.statu_code %>
+</p>
+
+
+
+<% if @stuff.statu_code == Stuff::STATU_CODE_AT_TRASH %>
+        <%= link_to 'Delete', :method => :delete %>
+
+<% elsif @stuff.statu_code != Stuff::STATU_CODE_DONE %>
+    <%= link_to 'Edit', edit_stuff_path %>
+    <%= link_to 'Done', "#{@stuff.id}/done" %>
+
+<% end %>

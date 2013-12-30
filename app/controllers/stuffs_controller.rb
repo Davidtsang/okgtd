@@ -55,19 +55,6 @@ class StuffsController < ApplicationController
     @stuffs = current_user.stuffs.where('stuffs.statu_code = ?', Stuff::STATU_CODE_AT_SCHEDULE)
   end
 
-
-
-  def project_show
-    @stuff = current_user.stuffs.find(params[:id])
-    #@sub_items
-    @sub_items = current_user.stuffs.where('parent_id = ?',params[:id])
-  end
-
-  def project_item_new
-    @stuff =current_user.stuffs.build
-    @stuff.parent_id = params[:id]
-
-  end
   def create
 
     @stuff = current_user.stuffs.build(stuff_params)
@@ -92,7 +79,19 @@ class StuffsController < ApplicationController
     end
   end
 
+  def done
+    @stuff = set_stuff
+    @stuff.statu_code = Stuff::STATU_CODE_DONE
+    if @stuff.save
+      flash[:success] = "You done this stuff!"
+      redirect_to @stuff
+    end
+  end
 
+  def trash
+    @stuffs = current_user.stuffs.where('stuffs.statu_code = ?',
+                                        Stuff::STATU_CODE_AT_TRASH)
+  end
 
   private
 

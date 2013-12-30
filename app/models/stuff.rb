@@ -19,6 +19,19 @@ class Stuff < ActiveRecord::Base
   STATU_CODE_AT_SCHEDULE =98
   STATU_CODE_AT_PROJECT =97
   NEED_DOING_STUFF_MIN_VAL = 50
+  STATU_CODE_2_NAME =
+      {
+          -99 => 'Done',
+          99 => 'at Next Action folder',
+          98 => 'at Schedule folder',
+          97 => 'at Project folder',
+          -2 => 'at Refence folder',
+          1 => 'at Inbox',
+          -1 => 'at Trashcan',
+          -3 => 'at Future folder',
+          3 => 'at Organzie folder',
+          -4 => 'at Other folder'
+      }
 
   PLAN_TIME =[['', -1],
               ['5 m', 1],
@@ -49,6 +62,10 @@ class Stuff < ActiveRecord::Base
               ['3 year', 26],
   ]
 
+  def Stuff.statu_code_2_name(statu_code)
+    STATU_CODE_2_NAME[statu_code]
+  end
+
   def plan_time_set
     @plan_times = Stuff::PLAN_TIME
     @plan_times =@plan_times[0..10] if :parent_id?
@@ -68,14 +85,16 @@ class Stuff < ActiveRecord::Base
     )
   end
 
-  def Stuff.stuff_code_2_group_num(groups,stuff_code)
+  def Stuff.stuff_code_2_group_num(groups, stuff_code)
     groups.each do |g|
-      if g.stuff_code  == stuff_code
+      if g.stuff_code == stuff_code
         return g.statu_num
-       end
+      end
     end
     return nil
-  end#
+  end
+
+  #
 
   def update_tags(new_stuff_tags)
     old_stuff_tags = self.tags

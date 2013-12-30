@@ -22,4 +22,10 @@ class ProjectsController < ApplicationController
 
   end
 
+  def item_new
+    @stuff =current_user.stuffs.build
+    @stuff.parent_id = params[:id]
+  end
+
+
 end
