@@ -17,10 +17,10 @@
 
 
 <% if @stuff.statu_code == Stuff::STATU_CODE_AT_TRASH %>
-        <%= link_to 'Delete', :method => :delete %>
+        <%= link_to '删除', :method => :delete %>
 
 <% elsif @stuff.statu_code != Stuff::STATU_CODE_DONE %>
-    <%= link_to 'Edit', edit_stuff_path %>
-    <%= link_to 'Done', "#{@stuff.id}/done" %>
+    <%= link_to '编辑', edit_stuff_path %>
+    <%= link_to '已完成', "#{@stuff.id}/done" %>
 
 <% end %>

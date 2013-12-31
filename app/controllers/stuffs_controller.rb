@@ -35,6 +35,15 @@ class StuffsController < ApplicationController
     @stuff =current_user.stuffs.build
   end
 
+  def destroy
+    @stuff = set_stuff
+    if @stuff.destroy
+      flash[:success] = '已删除!'
+      redirect_to stuffs_path
+    end
+
+  end
+
   def next_action
     @stuffs = current_user.stuffs.where('stuffs.statu_code = ?', Stuff::STATU_CODE_AT_NEXT)
 

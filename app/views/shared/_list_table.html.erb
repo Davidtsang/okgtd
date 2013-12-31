@@ -1,3 +1,6 @@
+<% if @stuffs.count ==0 %>
+    <p>没有。</p>
+<% else %>
 <table class="table">
   <% @stuffs.each do |s| %>
 
@@ -5,3 +8,4 @@
       </tr>
   <% end %>
 </table>
+<% end %>

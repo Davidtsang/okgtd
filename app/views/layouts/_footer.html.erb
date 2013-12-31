@@ -1,12 +1,14 @@
-<div class="footer">
+<div id="footer">
+  <div class="container">
 
-  <%= link_to 'Tags' , tags_path  %>
-  <%= link_to 'Trash' , trash_path  %>
-  <%= link_to 'All' , all_path  %> <br>
+    <%= link_to '标签', tags_path %>
+    <%= link_to '垃圾桶', trash_path %>
+    <%= link_to '全部事项', all_path %> <br>
 
-  <%= link_to 'help' , help_path  %>
-  <%= link_to 'about' , 'about'  %>
+    <%= link_to '帮助', help_path %>
+    <%= link_to '关于OKGTD', 'about' %>
 
-<p>Project do.it david@airlio.com</p>
-  <%= debug(params) if Rails.env.development? %>
+    <p class="small">Project do.it david@airlio.com</p>
+    <%= debug(params) if Rails.env.development? %>
+  </div>
 </div>

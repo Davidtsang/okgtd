@@ -1,12 +1,13 @@
-<div class='stuff-form'>
-  <%= form_for(@stuff) do |f| %>
 
-      <%= f.label :content %>
+  <%= form_for(@stuff,:role =>'form') do |f| %>
+
+      <div class="form-group">
+      <%= f.label '内容' %>
       <br/>
       <%= f.text_field :content %>
-      <br/>
-      <%= f.hidden_field :parent_id , :value =>@stuff.parent_id %>
+      <p>( 最长不要超过250字 )</p>
+        </div>
+      <%= f.hidden_field :parent_id , :value =>@stuff.parent_id,:class =>'form-control' %>
 
-      <%= f.submit "Create" %>
+      <%= f.submit "创建" %>
   <% end %>
-</div>

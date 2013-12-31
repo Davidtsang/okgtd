@@ -1,4 +1,4 @@
-<h1>Edit#Stuff#<%= @stuff.id %> </h1>
+<h1>编辑#材料#<%= @stuff.id %> </h1>
 <%= form_for @stuff do |f| %>
     <%= f.text_field :content %>
     <p>1. 预估需要时间</p>
@@ -39,7 +39,7 @@
     <%= f.submit "下一步" %>
 
 <% end %>
-
+<%= link_to '删除' , @stuff,method: :delete, data: { confirm: 'Are you sure?' } %>
 <script>
     $(function () {
         $("#stuff_plan_time").change(function () {

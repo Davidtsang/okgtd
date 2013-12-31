@@ -1,8 +1,13 @@
-<h1>Process#index</h1>
+<h1>处理</h1>
+<% if @stuffs.count ==0 %>
+    <p>没有。</p>
+    <% else %>
+
 <table class="table">
 <% @stuffs.each do |s| %>
 <tr><td><a href='process/<%= s.id %>/needdo'><%= s.content %></a></td>
 </tr>
 <% end %>
 </table>
+<% end %>
 

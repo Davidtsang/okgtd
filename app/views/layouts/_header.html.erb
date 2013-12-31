@@ -12,37 +12,37 @@
 	<div class="navbar-collapse collapse">
 		<ul class="nav navbar-nav">
 
-				<%= nav_link 'Home', home_path  %>
+				<%= nav_link '主页', home_path  %>
 
 
 
-				<%= nav_link 'Inbox', inbox_path %>
+				<%= nav_link '收件箱', inbox_path %>
 
 
 
-				<%= nav_link "Process#{status_num_2_badge @badge, Stuff::STATU_CODE_AT_INBOX}".html_safe, process_path %>
+				<%= nav_link "处理#{status_num_2_badge @badge, Stuff::STATU_CODE_AT_INBOX}".html_safe, process_path %>
 
-                <%= nav_link "Organize#{status_num_2_badge @badge, Stuff::STATU_CODE_AT_ORG}".html_safe, organzie_path %>
+                <%= nav_link "组织#{status_num_2_badge @badge, Stuff::STATU_CODE_AT_ORG}".html_safe, organzie_path %>
 
 
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">待办事项 <b class="caret"></b></a>
 				<ul class="dropdown-menu">
 
-                      <%= nav_link 'Next Action', next_action_path %>
+                      <%= nav_link '下一步行动', next_action_path %>
 
 
-                      <%= nav_link 'Schedule', schedule_path %>
+                      <%= nav_link '日程表', schedule_path %>
 
 
-                      <%= nav_link 'Project',projects_path %>
+                      <%= nav_link '项目',projects_path %>
 
                   <li class="divider"></li>
 
                     <%= nav_link '等待中的', waiting_path %>
 
 
-                    <%= nav_link '全部', all_path %>
+                    <%= nav_link '全部待处理事项', all_path %>
 
 
 				</ul>
@@ -52,17 +52,18 @@
 			<% if signed_in? %>
 
 			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>
+				<a href="#" class="dropdown-toggle"
+                   data-toggle="dropdown"><%= current_user.email %><b class="caret"></b></a>
 				<ul class="dropdown-menu">
 					<li>
-						<%= link_to "Profile", current_user %>
+						<%= link_to "简况", current_user %>
 					</li>
 					<li>
-						<%= link_to "Settings", '#' %>
+						<%= link_to "设置", '#' %>
 					</li>
 					<li class="divider"></li>
 					<li>
-						<%= link_to "Sign out", signout_path, method: "delete" %>
+						<%= link_to "退出", signout_path, method: "delete" %>
 					</li>
 
 				</ul>
