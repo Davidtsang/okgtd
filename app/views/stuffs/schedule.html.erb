@@ -1,2 +1,17 @@
 <h1>日程表</h1>
-<%= render 'shared/list_table' %>
+<% if @stuffs.count ==0 %>
+    <p>没有。</p>
+<% else %>
+    <table class="table">
+      <% @stuffs.each do |s| %>
+          <tr>
+            <th>内容</th>
+            <th width="100px">执行日期</th>
+          </tr>
+          <tr>
+            <td><%= link_to s.content, stuff_path(s.id) %></td>
+            <td><%= s.doing_date %></td>
+          </tr>
+      <% end %>
+    </table>
+<% end %>

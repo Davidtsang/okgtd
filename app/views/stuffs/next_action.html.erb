@@ -1,4 +1,4 @@
-<h1>Next Action</h1>
+<h1>下一步行动</h1>
 <p>Tag:
 <%Tag::folder_tags(current_user,Stuff::STATU_CODE_AT_NEXT).each do |t| %>
 <a href="next_action_by_tag/<%= t.tag_id %>"><%= t.name %><span class="badge"><%= t.stuffs_num %> </span> </a>
