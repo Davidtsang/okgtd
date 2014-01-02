@@ -79,10 +79,12 @@ class Stuff < ActiveRecord::Base
   end
 
   def Stuff.groups(user)
-    user.stuffs.all(
-        :group => "statu_code",
-        :select => 'statu_code ,COUNT(statu_code ) AS statu_num'
-    )
+    user.stuffs.select('statu_code ,COUNT(statu_code ) AS statu_num').group(:statu_code).reorder('')
+    #user.stuffs.all(
+    #    :select => 'statu_code ,COUNT(statu_code ) AS statu_num',
+    #    :group => "statu_code"
+    #
+    #)
   end
 
   def Stuff.stuff_code_2_group_num(groups, stuff_code)
