@@ -62,13 +62,33 @@ class Stuff < ActiveRecord::Base
               ['3 year', 26],
   ]
 
+  PLAN_TIME_2 =[['', -1],
+              ['5 m', 1],
+              ['15 m', 2],
+              ['30 m', 3],
+              ['1 h', 4],
+              ['2 h', 5],
+              ['3 h', 6],
+              ['4 h', 7],
+              ['5 h', 8],
+              ['6 h', 9],
+              ['7 h', 10]
+
+  ]
+
+
   def Stuff.statu_code_2_name(statu_code)
     STATU_CODE_2_NAME[statu_code]
   end
 
   def plan_time_set
-    @plan_times = Stuff::PLAN_TIME
-    @plan_times =@plan_times[0..10] if :parent_id?
+
+    if self.parent_id != nil
+      Stuff::PLAN_TIME[0..10]
+    else
+      Stuff::PLAN_TIME
+    end
+
   end
 
   def tags_ids
@@ -79,7 +99,8 @@ class Stuff < ActiveRecord::Base
   end
 
   def Stuff.groups(user)
-    user.stuffs.select('statu_code ,COUNT(statu_code ) AS statu_num').group(:statu_code).reorder('')
+    user.stuffs.select('statu_code ,COUNT(statu_code ) AS statu_num').
+        group(:statu_code).reorder('')
     #user.stuffs.all(
     #    :select => 'statu_code ,COUNT(statu_code ) AS statu_num',
     #    :group => "statu_code"

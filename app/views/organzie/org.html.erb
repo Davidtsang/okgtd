@@ -5,7 +5,7 @@
 
     <p>1. 预估需要时间</p>
 
-    <%= f.select(:plan_time, @stuff.plan_time_set) %><br>
+    <%= f.select(:plan_time,@stuff.plan_time_set) %><br>
     <div class="radio">
       <label>
         <%= f.radio_button(:statu_code, @stuff.to_next_act, :checked => true) %>下一步文件夹</label>
