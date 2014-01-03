@@ -2,7 +2,7 @@ class Tag < ActiveRecord::Base
   has_many :stuffs_tags
   has_many :stuffs, through: :stuffs_tags
   belongs_to :user
-  PRESET_TAGS =['at office','at home', 'at meeting','at phone','at outside']
+  PRESET_TAGS =['在办公室','在家里', '在会议中','在电话旁','在外出时']
 
   def Tag.folder_tags(user,folder_code)
     Tag.find_by_sql(["
