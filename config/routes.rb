@@ -35,6 +35,8 @@ Okgtd::Application.routes.draw do
   match '/signup',  to: 'users#new', via: 'get'
   match '/inbox',  to: 'stuffs#new', via: 'get'
   match '/process', to: 'process#index', via: 'get'
+  match 'about', to: 'static_pages#about', via: 'get'
+
   get "process/:id/needdo"  => "process#needdo"
   get 'process/:id/doit' =>'process#doit'
   get 'process/:id/donot' =>'process#donot'
