@@ -1,6 +1,13 @@
 class StuffsController < ApplicationController
   before_action :signed_in_user
 
+
+  def dones
+    @stuffs = current_user.stuffs.where('stuffs.statu_code = ?',
+                                        Stuff::STATU_CODE_DONE)
+
+  end
+
   def show
     @stuff = set_stuff
   end

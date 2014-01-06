@@ -1,0 +1,17 @@
+<h1>已完成的</h1>
+<% if @stuffs.count ==0 %>
+    <p>没有。</p>
+<% else %>
+    <table class="table">
+
+      <tr>
+        <th>项目</th>
+        <th width="200px">日期</th>
+      </tr>
+      <% @stuffs.each do |s| %>
+          <tr><td><%= link_to s.content , stuff_path(s.id) %></td>
+            <td> <%= s.updated_at.to_formatted_s(:db)  %></td>
+          </tr>
+      <% end %>
+    </table>
+<% end %>

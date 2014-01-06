@@ -29,6 +29,8 @@ Okgtd::Application.routes.draw do
   match '/stuffs/:id/set_schedule_act',to:'stuffs#set_schedule_act',via: 'patch'
   match '/waiting', to: 'stuffs#waiting', via: 'get'
   match '/stuffs/:id/done',to: 'stuffs#done',via: 'get'
+  match '/dones' ,to: 'stuffs#dones', via:'get'
+
   match '/organzie', to: 'organzie#index', via: 'get'
   match '/help', to: 'static_pages#help', via: 'get'
   match '/home', to: 'static_pages#home', via: 'get'
