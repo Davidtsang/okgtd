@@ -8,13 +8,13 @@ module ApplicationHelper
   end
 
   def nav_badge
-    if signed_in?
+    if user_signed_in?
       Stuff.groups(current_user)
     end
   end
 
   def status_num_2_badge(status_nums, nav_type)
-    if signed_in?
+    if user_signed_in?
       result = nil
       status_nums.each do |s|
         if s.statu_code == nav_type

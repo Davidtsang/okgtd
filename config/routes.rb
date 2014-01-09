@@ -1,11 +1,12 @@
 Okgtd::Application.routes.draw do
 
+  devise_for :users
+  resources :users
+
   resources :tags
 
   get "organzie/index"
   get "static_pages/home"
-
-
 
   get 'organzie/:id/org' =>'organzie#org'
 
@@ -34,7 +35,7 @@ Okgtd::Application.routes.draw do
   match '/organzie', to: 'organzie#index', via: 'get'
   match '/help', to: 'static_pages#help', via: 'get'
   match '/home', to: 'static_pages#home', via: 'get'
-  match '/signup',  to: 'users#new', via: 'get'
+
   match '/inbox',  to: 'stuffs#new', via: 'get'
   match '/process', to: 'process#index', via: 'get'
   match 'about', to: 'static_pages#about', via: 'get'
@@ -53,12 +54,8 @@ Okgtd::Application.routes.draw do
 
   get "static_pages/about"
   get "static_pages/contact"
-  resources :users
 
-  resources :sessions , only: [:new, :create, :destroy]
-  match '/signin' , to: 'sessions#new', via: 'get'
-  match '/signout', to: 'sessions#destroy',     via: 'delete'
-  
+
   root :to => "static_pages#home"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
