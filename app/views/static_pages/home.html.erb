@@ -1,2 +1,9 @@
 <h1>首页</h1>
 <p>欢迎来到okgtd.com!</p>
+<div class="toolbar">
+  <ul>
+    <%= link_to '标签', tags_path %>
+    <%= link_to '垃圾桶', trash_path %>
+    <%= link_to '已完成的', dones_path %>
+    <%= link_to '全部事项', all_path %> </ul>
+</div>
