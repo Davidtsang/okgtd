@@ -1,16 +1,16 @@
 <h3><%= @stuff.content %></h3>
-<p>deadline:
+<p>截止日期:
   <%= @stuff.deadline %></p>
-<p>doing date:
+<p>执行日期:
   <%= @stuff.doing_date %></p>
-<p>plan time:
+<p>计划时间:
   <%= @stuff.plan_time %>
 </p>
-<p>belongs to:
+<p>隶属于:
   <%= @stuff.parent_id %>
 </p>
 
-<p>statu:
+<p>状态:
   <%= Stuff::statu_code_2_name @stuff.statu_code %>
 </p>
 
